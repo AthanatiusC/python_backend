@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>VIP</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/vip-style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome-all.min.css">
+
+  <!-- Font Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="assets/plugins/animate-css/animate.css" >   
+
+  <!-- Plugins -->
+  <link rel="stylesheet" href="assets/plugins/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="assets/plugins/tooltipster-master/dist/css/tooltipster.bundle.min.css" />
+  <link rel="stylesheet" href="assets/plugins/bootstrap-select/css/bootstrap-select.min.css" />
+  <link rel="stylesheet" href="assets/plugins/bootstrap-toggle/css/bootstrap2-toggle.min.css">
+
+  <link rel="stylesheet" href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+  <link rel="stylesheet" href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css">
+  <link rel="stylesheet" href="assets/plugins/DataTables/datatables.min.css">
+  <link rel="stylesheet" href="assets/plugins/jstree/themes/proton/style.min.css" />
+
+  <link href="https://vjs.zencdn.net/7.6.6/video-js.css" rel="stylesheet" />
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+
+
+  <style type="text/css">
+  
+    #map {
+        position: absolute;
+        overflow: hidden;
+        top: 35px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+       }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div class="tab-menu">
+        <div class="menu-btn-toggle">
+          <div class="btn-group">
+            <button class="btn btn-default-menu btn-circle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="fas fa-user"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#">Profil</a></li>
+              <li><a href="#">Manual</a></li>
+              <li><a href="#">Settings</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Log Out</a></li>
+            </ul>
+          </div>
+        </div>
+        <a id="defaultMenuOpen" class="tooltip-test tabMenuLink" onclick="openMenu(event, 'camera_monitoring', this)"
+          title="Camera Monitoring">
+          <i class="material-icons"> remove_red_eye </i> 
+        </a>
+        <a class="tooltip-test tabMenuLink" onclick="openMenu(event, 'analytical_page', this)" title="Analytical">
+          <i class="material-icons"> videocam </i> 
+        </a>
+        <a class="tooltip-test tabMenuLink" onclick="openMenu(event, 'executive_dashboard_page',this)" title="Executive Dashboard">
+          <i class="material-icons">pie_chart</i>
+        </a>
+        <a class="tooltip-test tabMenuLink" onclick="openMenu(event, 'setting_page',this)" title="Setting">
+        <i class="fas fa-cog"></i>
+        </a>
+      </div>
+    </nav>
+    
+    <!-- Page Content Wrapper-->
+    <div id="content">
+      <!-- sidemenu  -->
+      <div class="sidemenu">
+        <!-- Main Menu Panel Box -->
+        <div id="main-menu-box">
+          <!-- Camera Monitoring Panel-->
+          <div id="camera_monitoring" class="tabContentMenu">
+            <div class="d-flex justify-content-center page-header-section">
+              <div class="w-30">
+                <div class="page-title">
+                  <div class="title">
+                    Camera Monitoring
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="w-20">
+                <div class="control-panel">
+                  <div class="map-camera">
+                    <div class="card-title">
+                      Map View
+                    </div>
+                    <div id="map"></div>
+                  </div>
+
+                  <div class="card-panel">
+                    <div class="card-title">
+                      Category View
+                    </div>
+                    <div class="tree-camera-category">
+                      <div id="cameraTree">
+                        <ul>
+                          <li>Root node
+                            <ul>
+                              <li id="child_node">Child node</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-80">
+               <div class="camera-cctv-panel">
+                 <div class="camera-list-view">
+                  <div class="d-flex mb-5 action-header-box">
+                     <div class="w-100">
+                       <div class="camera-stat">
+                         <h4>115 Camera monitored ( <span class="total-camera-stat-label">110 On serviced, 5 off</span> )</h4>
+                       </div>
+                     </div>
+                     <div class="w-100">
+                       <div class="d-flex">
+                         <div class="w-70">
+                            <div class="form-search-group has-feedback has-search-sidebar">
+                              <span class="fas fa-search form-control-search-sidebar"></span>
+                              <input type="text" class="form-search-bar" placeholder="Search...">
+                            </div>
+                         </div>
+                         <div class="w-30">
+                           <div class="form-search-group select-bar-form">
+                            <span class="fas fa-caret-down icon-dropdown-form"></span>
+                             <select class=" form-search-bar">
+                              <option value="on-off">On / Off</option>
+                               <option value="on">On</option>
+                               <option value="off">Off</option>
+                             </select>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                  </div>
+
+                  <!-- camera-list-wrapper div -->
+                  <div class="camera-list-wrapper">
+                     <!-- CCTV View Card Div-->
+                     <div class="camera-list-card">
+                       <div class="cam-viewer-video-container">
+                          <video
+                            class="video-js"
+                            preload="none"
+                            autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                          >
+                            <source src="assets/img/lobby-cctv-sample.mp4" type="video/mp4" />
+                            <p class="vjs-no-js">
+                              To view this video please enable JavaScript, and consider upgrading to a
+                              web browser that
+                              <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                >supports HTML5 video</a
+                              >
+                            </p>
+                          </video>
+                        </div>
+                       <div class="cctv-status-action">
+                         <div class="d-flex">
+                           <div class="w-70">
+                             <div class="cctv-name-view">
+                               HO Lobby
+                             </div>
+                           </div>
+                           <div class="w-30">
+                             <div class="d-flex">
+                               <div class="w-100">
+                                 <div class="full-screen-icon" onclick="cameraFocus();">
+                                   <i class="fas fa-expand-arrows-alt"></i>
+                                 </div>
+                               </div>
+                               <div class="w-100">
+                                 <div class="cctv-stat on">
+                                   ON
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                     <!-- End CCTV View Card Div-->
+
+                     <!-- CCTV View Card Div-->
+                     <div class="camera-list-card">
+                       <div class="cam-viewer-video-container">
+                          <video
+                            class="video-js"
+                            preload="none"
+                            autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                          >
+                            <source src="assets/img/working-room-cctv-sample.mp4" type="video/mp4" />
+                            <p class="vjs-no-js">
+                              To view this video please enable JavaScript, and consider upgrading to a
+                              web browser that
+                              <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                >supports HTML5 video</a
+                              >
+                            </p>
+                          </video>
+                        </div>
+                       <div class="cctv-status-action">
+                         <div class="d-flex">
+                           <div class="w-70">
+                             <div class="cctv-name-view">
+                               Working Room 1
+                             </div>
+                           </div>
+                           <div class="w-30">
+                             <div class="d-flex">
+                               <div class="w-100">
+                                 <div class="full-screen-icon" onclick="cameraFocus();">
+                                   <i class="fas fa-expand-arrows-alt"></i>
+                                 </div>
+                               </div>
+                               <div class="w-100">
+                                 <div class="cctv-stat on">
+                                   ON
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                      <!-- End CCTV View Card Div-->
+
+                        <!-- CCTV View Card Div-->
+                       <div class="camera-list-card">
+                        <div class="cam-viewer-video-container">
+                            <video
+                              class="video-js"
+                              preload="none"
+                              autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                            >
+                              <source src="assets/img/cam-off-cctv.mp4" type="video/mp4" />
+                              <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                  >supports HTML5 video</a
+                                >
+                              </p>
+                            </video>
+                          </div>
+                         <div class="cctv-status-action">
+                           <div class="d-flex">
+                             <div class="w-70">
+                               <div class="cctv-name-view">
+                                Meeting Room
+                               </div>
+                             </div>
+                             <div class="w-30">
+                               <div class="d-flex">
+                                 <div class="w-100">
+                                   <div class="full-screen-icon" onclick="cameraFocus();">
+                                     <i class="fas fa-expand-arrows-alt"></i>
+                                   </div>
+                                 </div>
+                                 <div class="w-100">
+                                   <div class="cctv-stat off">
+                                     OFF
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                        <!-- End CCTV View Card Div-->
+
+                      <!-- CCTV View Card Div-->
+                       <div class="camera-list-card">
+                         <div class="cam-viewer-video-container">
+                            <video
+                              class="video-js"
+                              preload="none"
+                              autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                            >
+                              <source src="assets/img/cam-cctv-sample-1.mp4" type="video/mp4" />
+                              <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                  >supports HTML5 video</a
+                                >
+                              </p>
+                            </video>
+                          </div>
+                         <div class="cctv-status-action">
+                           <div class="d-flex">
+                             <div class="w-70">
+                               <div class="cctv-name-view">
+                                 Front Office 2
+                               </div>
+                             </div>
+                             <div class="w-30">
+                               <div class="d-flex">
+                                 <div class="w-100">
+                                   <div class="full-screen-icon" onclick="cameraFocus();">
+                                     <i class="fas fa-expand-arrows-alt"></i>
+                                   </div>
+                                 </div>
+                                 <div class="w-100">
+                                   <div class="cctv-stat on">
+                                     ON
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                      <!-- End CCTV View Card Div-->
+
+                      <!-- CCTV View Card Div-->
+                       <div class="camera-list-card">
+                         <div class="cam-viewer-video-container">
+                            <video
+                              class="video-js"
+                              preload="none"
+                              autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                            >
+                              <source src="assets/img/cam-off-cctv.mp4" type="video/mp4" />
+                              <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                  >supports HTML5 video</a
+                                >
+                              </p>
+                            </video>
+                          </div>
+                         <div class="cctv-status-action">
+                           <div class="d-flex">
+                             <div class="w-70">
+                               <div class="cctv-name-view">
+                                 Front Office 3
+                               </div>
+                             </div>
+                             <div class="w-30">
+                               <div class="d-flex">
+                                 <div class="w-100">
+                                   <div class="full-screen-icon" onclick="cameraFocus();">
+                                     <i class="fas fa-expand-arrows-alt"></i>
+                                   </div>
+                                 </div>
+                                 <div class="w-100">
+                                   <div class="cctv-stat off">
+                                     OFF
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                      <!-- End CCTV View Card Div-->
+
+                      <!-- CCTV View Card Div-->
+                       <div class="camera-list-card">
+                         <div class="cam-viewer-video-container">
+                            <video
+                              class="video-js"
+                              preload="none"
+                              autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                            >
+                              <source src="assets/img/cam-cctv-sample-2.mp4" type="video/mp4" />
+                              <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                  >supports HTML5 video</a
+                                >
+                              </p>
+                            </video>
+                          </div>
+                         <div class="cctv-status-action">
+                           <div class="d-flex">
+                             <div class="w-70">
+                               <div class="cctv-name-view">
+                                 Front Office 4
+                               </div>
+                             </div>
+                             <div class="w-30">
+                               <div class="d-flex">
+                                 <div class="w-100">
+                                   <div class="full-screen-icon" onclick="cameraFocus();">
+                                     <i class="fas fa-expand-arrows-alt"></i>
+                                   </div>
+                                 </div>
+                                 <div class="w-100">
+                                   <div class="cctv-stat on">
+                                     ON
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                      <!-- End CCTV View Card Div-->
+                    </div>
+                    <!-- end camera-list-wrapper div -->
+
+                    <!-- camera list pagination -->
+                    <div class="d-flex pagination-box">
+                      <div class="w-100 pagination-cctv-list">
+                        <nav aria-label="pagination-cctv-list">
+                          <ul class="pagination">
+                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">Prev</span></a></li>
+                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#" aria-label="Next"><span aria-hidden="true">Next</span></a></li>
+                          </ul>
+                        </nav>
+                      </div>
+                    </div>
+                    <!-- end camera list pagination -->
+
+                    <!-- camera focus detail box -->
+                    <div class="camera-focus-detail">
+                      <div class="d-flex">
+                        <div class="w-100">
+                          <!-- CCTV View Card Div-->
+                           <div class="camera-list-card">
+                             <div class="cam-viewer-focus-container">
+                                <video
+                                  class="video-js"
+                                  preload="none"
+                                  autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                                >
+                                  <source src="assets/img/lobby-cctv-sample-pc.mp4" type="video/mp4" />
+                                  <p class="vjs-no-js">
+                                    To view this video please enable JavaScript, and consider upgrading to a
+                                    web browser that
+                                    <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                      >supports HTML5 video</a
+                                    >
+                                  </p>
+                                </video>
+                              </div>
+                             <!-- detail cctv -->
+                             <div class="cctv-status-action">
+                              <div class="collapse-panel">
+                                <button class="btn btn-primary" onclick="cameraFocus();">
+                                  <i class="fas fa-expand-arrows-alt"></i>
+                                  Collapse
+                                </button>
+                              </div>
+                               <div class="d-flex">
+                                 <div class="cctv-detail-info-card">
+                                   <div class="cctv-detail-label">
+                                     <h5>Name</h5>
+                                     <h4>CCTV Lobby Office</h4>
+                                   </div>
+                                   <div class="cctv-detail-label">
+                                     <h5>Category</h5>
+                                     <h4>HO <i class="fas fa-caret-right"></i> Jakarta <i class="fas fa-caret-right"></i> Kemayoran <i class="fas fa-caret-right"></i> Lobby</h4>
+                                   </div>
+                                 </div>
+                                 <div class="cctv-detail-info-card">
+                                   <div class="cctv-detail-label">
+                                     <h5>Brand</h5>
+                                     <h4>Hik Vision AS 200</h4>
+                                   </div>
+                                   <div class="cctv-detail-label">
+                                     <h5>Applied Rules</h5>
+                                     <h4>FR, People Counting</h4>
+                                   </div>
+                                 </div>
+                                 <div class="cctv-detail-info-card">
+                                   <div class="cctv-detail-label">
+                                     <h5>Alert</h5>
+                                     <h4>Operation (Whatsapp)</h4>
+                                   </div>
+                                   <div class="cctv-detail-label">
+                                     <h5>Created Date</h5>
+                                     <h4>25-05-2019 12:00</h4>
+                                   </div>
+                                 </div>
+                                 <div class="cctv-detail-info-card">
+                                    <div class="cctv-detail-label">
+                                     <h5>Status</h5>
+                                     <h4 class="on-stat">ON</h4>
+                                    </div>
+                                 </div>
+                               </div>
+                             </div>
+                             <!-- detail cctv end -->
+                             <!-- cctv-playback -->
+                             <div class="cctv-status-action">
+                              <div class="playback-toolbar">
+                                <div class="d-flex">
+                                  <div class="w-100 playback-panel-header">
+                                    Playback
+                                  </div>
+                                </div>
+                                <div class="d-flex bg-dark-blue">
+                                    <div class="w-100">
+                                      <div id="daterangecctv-container">
+                                        <div class="input-daterange input-group" id="datepicker">
+                                            <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+                                            <input type="text" class="input-sm form-control" name="start" />
+                                            <span class="input-group-addon bg-dark-blue-two">to</span>
+                                            <input type="text" class="input-sm form-control" name="end" />
+                                            <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+                                        </div>
+                                      </div>   
+                                    </div>
+                                    <div class="w-100">
+                                      <div class="playback-control">
+                                        <div class="d-flex">
+                                          <div class="playback-control-btn">
+                                            <button class="btn-playback">
+                                              <i class="material-icons">
+                                               fast_rewind
+                                              </i>
+                                            </button>
+                                          </div>
+                                          <div class="playback-control-btn">
+                                            <button class="btn-playback b-rl">
+                                              <i class="material-icons">
+                                               play_arrow
+                                              </i>
+                                            </button>
+                                          </div>
+                                          <div class="playback-control-btn">
+                                            <button class="btn-playback">
+                                              <i class="material-icons">
+                                               fast_forward
+                                              </i>
+                                            </button>
+                                          </div>
+                                          <div class="w-100 slider-bar-cctv">
+                                            <div class="progress md-progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <span class="totaltime-playback">
+                                                  30:00
+                                                </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                              </div>
+                             </div>
+                             <!-- cctv-playback -->
+                           </div>
+                          <!-- End CCTV View Card Div-->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end camera focus detail box -->
+
+                   </div>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Analytical Panel  -->
+          <div id="analytical_page" class="tabContentMenu">
+              Analytical Page
+          </div>
+
+          <!-- Executive Dashboard Panel  -->
+          <div id="executive_dashboard_page" class="tabContentMenu">
+            Executive Dashboard Page
+          </div>
+
+          <!-- Setting Panel  -->
+          <div id="setting_page" class="tabContentMenu">
+            <div class="d-flex justify-content-center page-header-section">
+              <div class="w-30">
+                <div class="page-title">
+                  <div class="title">
+                    Settings
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex mt-10">
+              <div class="w-20 pr-10">
+                <div class="sub-menu-page">
+                  <ul>
+                    <li>
+                      <a id="defaultSettingMenuOpen" class="tabSettingMenuLink" onclick="openSettingMenu(event, 'category_page', this)">
+                        <i class="fas fa-tags"></i> 
+                        Category
+                      </a>
+                    </li>
+                    <li>
+                      <a class="tabSettingMenuLink" onclick="openSettingMenu(event, 'camera_page',this)">
+                        <i class="fas fa-video"></i>
+                        Camera
+                      </a>
+                    </li>
+                    <li>
+                      <a class="tabSettingMenuLink" onclick="openSettingMenu(event, 'face_registration',this)">
+                        <i class="fas fa-smile"></i>
+                        Face Registration
+                      </a>
+                    </li>
+                    <li>
+                      <a class="tabSettingMenuLink" onclick="openSettingMenu(event, 'analysis_menu',this)">
+                        <i class="fas fa-bullseye"></i>
+                        Analysis
+                      </a>
+                    </li>
+                    <li>
+                      <a class="tabSettingMenuLink" onclick="openSettingMenu(event, 'access_control_menu',this)">
+                        <i class="fas fa-cog"></i>
+                        Access Control
+                      </a>
+                    </li>
+                    <li>
+                      <a class="tabSettingMenuLink" onclick="openSettingMenu(event, 'alert_menu',this)">
+                        <i class="fas fa-bell"></i>
+                        Alert
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="w-80">
+               <div id="category_page" class="tabSettingContentMenu">
+                <div class="content-sub-menu">
+                 <div class="d-flex subtitle-menu-panel">
+                   <div class="w-100">
+                     <h4 class="title-panel">Category</h4>
+                   </div>
+                 </div>
+                 <div class="d-flex">
+                   <div class="w-100">
+                     <div class="form-camera-category">
+                       <form class="form-horizontal">
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">Parent Category</label>
+                          <div class="col-sm-9">
+                            <span class="fas fa-caret-down icon-dropdown-form"></span>
+                            <select class="form-control">
+                              <option>...</option>
+                              <option>1</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-sm-3 control-label">Category</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-sm-3 control-label">Location</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-sm-3 control-label">Description</label>
+                          <div class="col-sm-9">
+                            <textarea class="form-control" rows="3"></textarea>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                          </div>
+                        </div>
+                      </form>
+                     </div>
+                   </div>
+                   <div class="w-100">
+                     <div class="category-panel">
+                       <div id="category_cameraTree">
+                        <ul>
+                          <li>Root node
+                            <ul>
+                              <li id="child_node">Child node</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                     </div>
+                   </div>
+                 </div>
+                </div>
+               </div>
+                <div id="camera_page" class="tabSettingContentMenu">
+                 <div class="content-sub-menu">
+                   <div class="d-flex subtitle-menu-panel header-camera-list-hide">
+                     <div class="w-100">
+                       <h4 class="title-panel">Camera Configuration</h4>
+                     </div>
+                     <div class="w-100">
+                       <div class="d-flex justify-content-end">
+                         <!-- <div class="w-40 form-select-relative">
+                           <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                           <select class="form-control">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                           </select>
+                         </div> -->
+                         <div class="btn-header-subtitle">
+                           <button class="btn btn-primary ml-0">
+                             <i class="fas fa-video"></i>
+                           </button>
+                         </div>
+                         <div class="btn-header-subtitle mr-0">
+                           <button class="btn btn-primary" onclick="addNewCamera()">
+                             <i class="fas fa-plus"></i>
+                           </button>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="table-view-cctv active">
+                     <div class="w-100">
+                      <div class="table-camera">
+                        <table id="table_camera_setting" class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Name</th>
+                              <th>Category</th>
+                              <th>Host</th>
+                              <th>Port</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>Main Gate</td>
+                              <td>
+                                HO <i class="fas fa-caret-right breadcrumb-cctv"></i> Jakarta <i class="fas fa-caret-right breadcrumb-cctv"></i> Kemayoran <i class="fas fa-caret-right breadcrumb-cctv"></i> Lobby
+                              </td>
+                              <td>
+                                192.168.1.15
+                              </td>
+                              <td>1802</td>
+                              <td>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-trash-alt"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Meeting Room 1</td>
+                              <td>
+                                HO <i class="fas fa-caret-right breadcrumb-cctv"></i> Jakarta <i class="fas fa-caret-right breadcrumb-cctv"></i> Kemayoran <i class="fas fa-caret-right breadcrumb-cctv"></i> Lobby
+                              </td>
+                              <td>
+                                192.168.1.15
+                              </td>
+                              <td>1802</td>
+                              <td>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-trash-alt"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Meeting Room 2</td>
+                              <td>
+                                HO <i class="fas fa-caret-right breadcrumb-cctv"></i> Jakarta <i class="fas fa-caret-right breadcrumb-cctv"></i> Kemayoran <i class="fas fa-caret-right breadcrumb-cctv"></i> Lobby
+                              </td>
+                              <td>
+                                192.168.1.15
+                              </td>
+                              <td>1802</td>
+                              <td>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-trash-alt"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                     </div>
+                   </div>
+                   <div class="camera-add">
+                     <div class="w-100">
+                       <div class="form-add-new-camera">
+                        <div class="d-flex subtitle-menu-panel">
+                         <div class="w-100">
+                           <h4 class="title-panel">Add New Camera</h4>
+                         </div>
+                        </div>
+                        <div class="d-flex">
+                          <div class="w-100">
+                            <form>
+                              <div class="d-flex">
+                                <div class="w-100 form-column">
+                                  <div class="form-group">
+                                    <label>Category</label>
+                                    <div class="form-select-relative">
+                                       <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                                        <select class="form-control">
+                                          <option>...</option>
+                                          <option>1</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Brand</label>
+                                    <input type="text" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Lat / Long</label>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Address</label>
+                                    <textarea class="form-control" rows="4"></textarea>
+                                  </div>
+                                </div>
+                                <div class="w-100 form-column">
+                                  <div class="form-group">
+                                    <label>Protocol</label>
+                                    <div class="form-select-relative">
+                                       <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                                        <select class="form-control">
+                                          <option>...</option>
+                                          <option>1</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Hostname</label>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="text" class="form-control">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Path</label>
+                                    <input type="text" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>User</label>
+                                    <input type="text" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Configuration</label>
+                                    <textarea class="form-control" rows="4"></textarea>
+                                  </div>
+                                </div>
+                              </div>
+
+                               <div class="d-flex">
+                                 <div class="w-100 text-center">
+                                   <button type="button" class="btn btn-default" onclick="addNewCamera()" >Cancel</button>
+                                   <button type="submit" class="btn btn-primary">Submit</button>
+                                 </div>
+                               </div>
+                            </form>
+                          </div>
+                        </div>
+                         
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <div id="face_registration" class="tabSettingContentMenu">
+                <div class="content-sub-menu">
+                  <div class="d-flex subtitle-menu-panel header-facelist-hide">
+                     <div class="w-100">
+                       <h4 class="title-panel">Face Registration</h4>
+                     </div>
+                     <div class="w-100">
+                       <div class="d-flex justify-content-end">
+                         <div class="btn-header-subtitle mr-0">
+                           <button class="btn btn-primary" onclick="addNewFace()">
+                             <i class="fas fa-plus"></i> 
+                             Add New Face
+                           </button>
+                         </div>
+                       </div>
+                     </div>
+                  </div>
+                  <div class="face-reg-list active">
+                    <div class="w-100">
+                      <div class="table-face-reg">
+                        <table id="table_face_reg_list" class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th width="40px">No</th>
+                              <th>Name</th>
+                              <th>Group</th>
+                              <th>Create Date</th>
+                              <th>Picture</th>
+                              <th width="200px">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>Tejo</td>
+                              <td>SDM</td>
+                              <td>11/11/2019</td>
+                              <td>
+                                <div class="face-pic-reg">
+                                  <img src="assets/img/face-reg-2.jpg" alt="">
+                                </div>
+                              </td>
+                              <td>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-trash-alt"></i>
+                                </button>
+                              </td>
+                            </tr>
+                             <tr>
+                              <td>2</td>
+                              <td>Surti</td>
+                              <td>SDM</td>
+                              <td>11/11/2019</td>
+                              <td>
+                                <div class="face-pic-reg">
+                                  <img src="assets/img/face-reg-1.jpg" alt="">
+                                </div>
+                              </td>
+                              <td>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                  <i class="fas fa-trash-alt"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="face-reg-form">
+                    <div class="w-100">
+                      <div class="d-flex subtitle-menu-panel">
+                        <div class="w-100">
+                          <h4 class="title-panel">Add New Face</h4>
+                        </div>
+                      </div>
+                      <div class="d-flex">
+                        <div class="w-100">
+                          <form class="form-horizontal">
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Group</label>
+                              <div class="col-sm-9">
+                                <span class="fas fa-caret-down icon-dropdown-form"></span>
+                                <select class="form-control">
+                                  <option>...</option>
+                                  <option>1</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">ID (Unique)</label>
+                              <div class="col-sm-9">
+                                <input type="number" class="form-control">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Name</label>
+                              <div class="col-sm-9">
+                                <input type="text" class="form-control">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-3 control-label">Description</label>
+                              <div class="col-sm-9">
+                               <textarea class="form-control" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-offset-3 col-sm-9">
+                               <div class="face-wrapper ml-min-6">
+                                 <div class="face-card">
+                                   <div class="face-pic-reg-form">
+                                     <img src="assets/img/face-reg-1.jpg">
+                                   </div>
+                                   <div class="d-flex">
+                                     <div class="w-100 text-right">
+                                       <button class="btn-sm btn-danger btn-block">
+                                         <i class="fas fa-trash-alt"></i>
+                                       </button>
+                                     </div>
+                                   </div>
+                                 </div>
+                                 <div class="face-card">
+                                   <div class="face-pic-reg-form">
+                                     <img src="assets/img/face-reg-1.jpg">
+                                   </div>
+                                   <div class="d-flex">
+                                     <div class="w-100 text-right">
+                                       <button class="btn-sm btn-danger btn-block">
+                                         <i class="fas fa-trash-alt"></i>
+                                       </button>
+                                     </div>
+                                   </div>
+                                 </div>
+                                 <div class="face-card">
+                                   <div class="face-pic-reg-form">
+                                     <img src="assets/img/face-reg-1.jpg">
+                                   </div>
+                                   <div class="d-flex">
+                                     <div class="w-100 text-right">
+                                       <button class="btn-sm btn-danger btn-block">
+                                         <i class="fas fa-trash-alt"></i>
+                                       </button>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary mr-10"> 
+                                  Save
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                  Load Template
+                                </button>
+                                <button type="button" class="btn btn-default">
+                                  <i class="fas fa-camera"></i> 
+                                  Capture
+                                </button>
+                                <button type="button" class="btn btn-default " onclick="addNewFace()">
+                                  Cancel
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               </div>
+               <div id="analysis_menu" class="tabSettingContentMenu">
+                 <div class="content-sub-menu">
+                  <div class="d-flex subtitle-menu-panel header-analytic-hide">
+                     <div class="w-100">
+                       <h4 class="title-panel">Analytic</h4>
+                     </div>
+                  </div>
+                  <div class="d-flex form-analytic-method-view active">
+                    <div class="w-100">
+                      <form>
+                        <div class="d-flex">
+                          <div class="w-100 form-column">
+                            <div class="form-group">
+                              <label>Choose Camera</label>
+                              <div class="form-select-relative">
+                                 <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                                  <select class="form-control">
+                                    <option>Main Gate</option>
+                                    <option>Meeting Room 1</option>
+                                    <option>Meeting Room 2</option>
+                                    <option>Meeting Room 3</option>
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                             <div id="cam-fr" class="cam-capture active">
+                               <img src="assets/img/lobby-cctv-sample.jpg" alt="">
+                             </div>
+                             <div id="cam-pc" class="cam-capture">
+                               <img src="assets/img/lobby-cctv-sample-pc.jpg" alt="">
+                             </div>
+                            </div>
+                            <div class="form-group">
+                             <button class="btn btn-primary">
+                               Save
+                             </button>
+                             <button id="preview_fr" class="btn btn-default active" onclick="previewFaceRecog()">
+                               Preview
+                             </button>
+                             <button id="preview_pc" class="btn btn-default" onclick="previewPeopleCount()">
+                               Preview
+                             </button>
+                             <button class="btn btn-default">
+                               Add Analytical Method
+                             </button>
+                            </div>
+                          </div>
+                          <div class="w-100 form-column">
+                            <div class="form-group">
+                               <label>Analytic Method</label>
+                               <div class="d-flex">
+                                  <div class="form-select-relative w-100">
+                                     <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                                      <select id="analytic_method_select" class="form-control">
+                                        <option value="face-recog-method">Face Recognation</option>
+                                        <option value="people-counting-method">People Counting</option>
+                                        <option value="white-black-list-method">Whitelist / Blacklist</option>
+                                      </select>
+                                  </div>
+                                  <div class="add-method-btn">
+                                    <button class="btn btn-primary btn-block">
+                                      <i class="fas fa-plus"></i>
+                                    </button>
+                                  </div>
+                               </div>
+                            </div>
+                            <div id="faceRecogMethod" class="form-group active">
+                              <label>Editor</label>
+                              <div class="form-select-relative">
+                                <div class="d-flex">
+                                  <div class="box-editor">
+                                    <button class="btn btn-default btn-editor" disabled="disabled">
+                                     <i class="material-icons">edit</i>
+                                    </button>
+                                    <h5>Line</h5>
+                                  </div>
+                                  <div class="box-editor">
+                                    <button class="btn btn-default btn-editor" disabled="disabled">
+                                     <i class="material-icons">crop_3_2</i>
+                                    </button>
+                                    <h5>Polygon</h5>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="text-box">
+                                <ul>
+                                  <li>FR Method -  no need Editor (Automatically recognize and counting the face)</li>
+                                  <li>People Counting -  Need Editor</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div id="peopleCountingMethod" class="form-group">
+                              <label>Editor</label>
+                              <div class="form-select-relative">
+                                <div class="d-flex">
+                                  <div class="box-editor">
+                                    <button class="btn btn-default btn-editor">
+                                     <i class="material-icons">edit</i>
+                                    </button>
+                                    <h5>Line</h5>
+                                  </div>
+                                  <div class="box-editor">
+                                    <button class="btn btn-default btn-editor">
+                                     <i class="material-icons">crop_3_2</i>
+                                    </button>
+                                    <h5>Polygon</h5>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="text-box">
+                                <ul>
+                                  <li>If use line editor will be need two lined (Line - in & Line Out)</li>
+                                  <li>Distinct means only unique ID (people) counted</li>
+                                </ul>
+                              </div>
+                              <div class="form-group">
+                                 <label>Calculation</label>
+                                 <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox"> Distinct
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="whiteblack_list_method" class="form-group">
+                              <label>Editor</label>
+                              <div class="form-select-relative mb-10">
+                                <div class="d-flex">
+                                  <div class="box-editor">
+                                    <button class="btn btn-default btn-editor">
+                                     <i class="material-icons">edit</i>
+                                    </button>
+                                    <h5>Line</h5>
+                                  </div>
+                                  <div class="box-editor">
+                                    <button class="btn btn-default btn-editor">
+                                     <i class="material-icons">crop_3_2</i>
+                                    </button>
+                                    <h5>Polygon</h5>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group mb-10">
+                                <label>Type</label>
+                                <div class="form-inline-box">
+                                  <label class="radio-inline">
+                                  <input type="radio" name="inlineRadioOptions" value="option1" checked> Black List
+                                </label>
+                                <label class="radio-inline">
+                                  <input type="radio" name="inlineRadioOptions" value="option2"> White List
+                                </label>
+                                </div>
+                              </div>
+                              <div class="form-group mb-10">
+                                <label>People</label>
+                                <div class="form-select-relative w-100">
+                                  <span class="fas fa-search icon-dropdown-form r-0"></span>
+                                  <input type="text" class="form-control" placeholder="Search People">
+                                </div>
+                                <div class="search-people-wrapper">
+                                  <div class="face-search-card">
+                                    <div class="face-search-pic">
+                                      <img src="assets/img/face-reg-3.jpg" alt="">
+                                    </div>
+                                    <div class="d-flex bg-footer">
+                                      <div class="w-70">
+                                        <h5 class="face-search-name">Melly</h5>
+                                      </div>
+                                      <div class="w-30">
+                                        <button class="btn btn-sm btn-danger btn-block">
+                                          <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="face-search-card">
+                                    <div class="face-search-pic">
+                                      <img src="assets/img/face-reg-1.jpg" alt="">
+                                    </div>
+                                    <div class="d-flex bg-footer">
+                                      <div class="w-70">
+                                        <h5 class="face-search-name">Surti</h5>
+                                      </div>
+                                      <div class="w-30">
+                                        <button class="btn btn-sm btn-danger btn-block">
+                                          <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group mb-10">
+                                <label>Alert</label>
+                                <div class="d-flex">
+                                  <div class="form-select-relative w-50 mr-10">
+                                     <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                                      <select class="form-control">
+                                        <option>- if match -</option>
+                                        <option>Name</option>
+                                        <option>Count Target</option>
+                                      </select>
+                                  </div>
+                                  <div class="form-select-relative w-50 mr-10">
+                                     <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                                      <select class="form-control">
+                                        <option>- Operation -</option>
+                                        <option>Like</option>
+                                        <option>></option>
+                                        <option>=</option>
+                                        <option><</option>
+                                      </select>
+                                  </div>
+                                  <div class="w-100">
+                                    <input type="text" class="form-control">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label>Notification</label>
+                                <div class="form-select-relative w-100 mr-10">
+                                   <span class="fas fa-caret-down icon-dropdown-form r-0"></span>
+                                    <select class="form-control">
+                                      <option>- Notification Type -</option>
+                                      <option>...</option>
+                                      <option>...</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="d-flex form-preview-fr">
+                    <div class="w-100">
+                      <div class="d-flex subtitle-menu-panel header-facelist-hide">
+                         <div class="w-100">
+                           <h4 class="title-panel">Analytic - Preview</h4>
+                         </div>
+                      </div>
+                      <div class="d-flex">
+                        <div class="w-100">
+                           <div class="cam-viewer-video-container">
+                              <video
+                                class="video-js"
+                                preload="none"
+                                autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                              >
+                                <source src="assets/img/lobby-cctv-sample-fr.mp4" type="video/mp4" />
+                                <p class="vjs-no-js">
+                                  To view this video please enable JavaScript, and consider upgrading to a
+                                  web browser that
+                                  <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                    >supports HTML5 video</a
+                                  >
+                                </p>
+                              </video>
+                            </div>
+                            <div class="form-group mt-10">
+                             <button class="btn btn-primary">
+                               Save
+                             </button>
+                             <button class="btn btn-default" onclick="previewFaceRecog()">
+                               Back
+                             </button>
+                            </div>
+                        </div>
+                        <div class="w-100">
+                          <div class="panel-info-preview">
+                            <div class="recog-title">
+                              Recognize : <span class="recog-number">20</span>
+                            </div>
+                            <div class="registered-stat">
+                              Registered : <span class="reg-detect">3</span>
+                            </div>
+                            <div class="face-wrapper">
+                              <div class="face-reg-card">
+                                <div class="face-pic-registered">
+                                  <img src="assets/img/face-reg-1.jpg" alt="">
+                                </div>
+                                <h5 class="face-reg-name">Surti</h5>
+                              </div>
+                              <div class="face-reg-card">
+                                <div class="face-pic-registered">
+                                  <img src="assets/img/face-reg-2.jpg" alt="">
+                                </div>
+                                <h5 class="face-reg-name">Tejo</h5>
+                              </div>
+                              <div class="face-reg-card">
+                                <div class="face-pic-registered">
+                                  <img src="assets/img/face-reg-3.jpg" alt="">
+                                </div>
+                                <h5 class="face-reg-name">Sarah</h5>
+                              </div>
+                            </div>
+                            <div class="unregistered-stat">
+                              Unregistered : <span class="unreg-detect">17</span>
+                            </div>
+                            <div class="face-wrapper">
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                              <div class="face-unreg-card">
+                                <div class="face-pic-unreg">
+                                  <img src="assets/img/face-unreg.png" alt="">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex form-preview-pc">
+                    <div class="w-100">
+                      <div class="d-flex subtitle-menu-panel header-facelist-hide">
+                         <div class="w-100">
+                           <h4 class="title-panel">Analytic - Preview</h4>
+                         </div>
+                      </div>
+                      <div class="d-flex">
+                        <div class="w-100">
+                           <div class="cam-viewer-video-container">
+                              <video
+                                class="video-js"
+                                preload="none"
+                                autoplay loop muted data-setup='{"fluid": true, "autoplay": true}'
+                              >
+                                <source src="assets/img/lobby-cctv-sample-pc.mp4" type="video/mp4" />
+                                <p class="vjs-no-js">
+                                  To view this video please enable JavaScript, and consider upgrading to a
+                                  web browser that
+                                  <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                    >supports HTML5 video</a
+                                  >
+                                </p>
+                              </video>
+                            </div>
+                            <div class="form-group mt-10">
+                             <button class="btn btn-primary">
+                               Save
+                             </button>
+                             <button class="btn btn-default" onclick="previewPeopleCount()">
+                               Back
+                             </button>
+                            </div>
+                        </div>
+                        <div class="w-100">
+                          <div class="panel-info-preview">
+                            <div class="recog-title">
+                              People Counting
+                            </div>
+                            <h4 class="pc-number count">20</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               </div>
+               <div id="access_control_menu" class="tabSettingContentMenu">
+                 Access Control Menu
+               </div>
+               <div id="alert_menu" class="tabSettingContentMenu">
+                 Alert Menu
+               </div>
+               <div id="integration_menu" class="tabSettingContentMenu">
+                 Integration Menu
+               </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- End Main Menu Panel Box -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!-- Bootstrap Js CDN -->
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Plugins  -->
+  <script src="assets/plugins/slimscroll/jquery.slimscroll.js"></script>
+  <script type="text/javascript" src="assets/plugins/tooltipster-master/dist/js/tooltipster.bundle.min.js"></script>
+  <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+  <script src="assets/plugins/bootstrap-toggle/js/bootstrap2-toggle.min.js"></script>
+  <script src="assets/plugins/DataTables/datatables.min.js"></script>
+  <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script src="assets/plugins/jstree/jstree.min.js"></script>
+  <script src="https://vjs.zencdn.net/7.6.6/video.js"></script>
+
+
+  <script>
+    function initMap() {
+      //indonesia
+      var indonesia = { lat: -6.218605, lng: 106.802612 };
+
+      // Styles a map in night mode.
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: indonesia,
+        zoom: 15,
+        zoomControl: true,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_TOP
+        },
+        fullscreenControl: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        styles:
+          [
+            {
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#1d2c4d"
+                }
+              ]
+            },
+            {
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#8ec3b9"
+                }
+              ]
+            },
+            {
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "color": "#1a3646"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.country",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#4b6878"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.land_parcel",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#64779e"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.province",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#4b6878"
+                }
+              ]
+            },
+            {
+              "featureType": "landscape.man_made",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#334e87"
+                }
+              ]
+            },
+            {
+              "featureType": "landscape.natural",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#023e58"
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#283d6a"
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#6f9ba5"
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "color": "#1d2c4d"
+                }
+              ]
+            },
+            {
+              "featureType": "poi.park",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#023e58"
+                }
+              ]
+            },
+            {
+              "featureType": "poi.park",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#3C7680"
+                }
+              ]
+            },
+            {
+              "featureType": "road",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#304a7d"
+                }
+              ]
+            },
+            {
+              "featureType": "road",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#98a5be"
+                }
+              ]
+            },
+            {
+              "featureType": "road",
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "color": "#1d2c4d"
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#2c6675"
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#255763"
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#b0d5ce"
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "color": "#023e58"
+                }
+              ]
+            },
+            {
+              "featureType": "transit",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#98a5be"
+                }
+              ]
+            },
+            {
+              "featureType": "transit",
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "color": "#1d2c4d"
+                }
+              ]
+            },
+            {
+              "featureType": "transit.line",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#283d6a"
+                }
+              ]
+            },
+            {
+              "featureType": "transit.station",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#3a4762"
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#0e1626"
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#4e6d70"
+                }
+              ]
+            }
+          ]
+      });
+      
+      //marker
+      var marker = new google.maps.Marker({
+          position: indonesia,
+          map: map,
+          title: 'Hello World!'
+        });
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_kvR77yemLkdX32kmw09-UPUZsZfoHw8&callback=initMap">
+  </script>
+
+  <script>
+       // Automaticly open tabmenu when load
+       $("#defaultMenuOpen").click();
+
+      // TabMenu JS 
+      function openMenu(evt, subMainMenu, e) {
+        var i, t, thisabContentMenu, tabMenuLink;
+        tabContentMenu = document.getElementsByClassName("tabContentMenu");
+        for (i = 0; i < tabContentMenu.length; i++) {
+          tabContentMenu[i].style.display = "none";
+        }
+        tabMenuLink = document.getElementsByClassName("tabMenuLink");
+        for (i = 0; i < tabMenuLink.length; i++) {
+          tabMenuLink[i].className = tabMenuLink[i].className.replace(" active", "");
+        }
+        document.getElementById(subMainMenu).style.display = "block";
+        $(e).attr('class', $(e).attr('class')+' active');
+        // evt.currentTarget.className += " active";
+      }
+
+      // Automaticly open tabmenu when load
+       $("#defaultSettingMenuOpen").click();
+
+      // TabMenu JS 
+      function openSettingMenu(evt, subSettingMenu, e) {
+        var i, t, thisabContentMenu, tabSettingMenuLink;
+        tabContentMenu = document.getElementsByClassName("tabSettingContentMenu");
+        for (i = 0; i < tabContentMenu.length; i++) {
+          tabContentMenu[i].style.display = "none";
+        }
+        tabSettingMenuLink = document.getElementsByClassName("tabSettingMenuLink");
+        for (i = 0; i < tabSettingMenuLink.length; i++) {
+          tabSettingMenuLink[i].className = tabSettingMenuLink[i].className.replace(" active", "");
+        }
+        document.getElementById(subSettingMenu).style.display = "block";
+        $(e).attr('class', $(e).attr('class')+' active');
+        // evt.currentTarget.className += " active";
+      }
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // $("#sidebar").slimScroll();
+
+      var sidebar = parseInt($("#sidebar").height());
+      $('.tab-menu').slimScroll({
+          height: sidebar,
+          color: '#fff'
+      });
+
+      $('.tooltip-test').tooltipster({
+        position: 'right'
+      });
+
+    });
+  </script>
+
+  <script>
+    $(function() {
+         $('#cameraTree').jstree({
+            'plugins': ["wholerow", "checkbox"],
+            'core': {
+              'data': [{
+                "text": "HD",
+                "state": { "opened": false },
+                "children": [
+                {
+                  "text": "Jakarta",
+                  "icon": "fas fa-caret-right",
+                  "children": [
+                  {
+                    "text": "Jakarta Utara",
+                    "icon": false
+                  },
+                  {
+                    "text": "Jakarta Timur",
+                    "icon": false
+                  },
+                  {
+                    "text": "Jakarta Selatan",
+                    "icon": false
+                  },
+                  {
+                    "text": "Jakarta Barat",
+                    "icon": false
+                  }
+                  ]
+                }, {
+                  "text": "Zone 2",
+                  "icon": "fas fa-caret-right",
+                  "children": [
+                  {
+                    "text": "...EZZ",
+                    "icon": false
+                  },
+                  {
+                    "text": "...EZZ 2",
+                    "icon": false
+                  },
+                  {
+                    "text": "...EZZ 3",
+                    "icon": false
+                  },
+                  {
+                    "text": "...EZZ 4",
+                    "icon": false
+                  }
+                  ]
+                }, {
+                  "text": "Zone 3",
+                  "icon": "fas fa-caret-right",
+                  "children": [
+                    {
+                      "text": "...EZZ",
+                      "icon": false
+                    },
+                    {
+                      "text": "...EZZ 2",
+                      "icon": false
+                    },
+                    {
+                      "text": "...EZZ 3",
+                      "icon": false
+                    },
+                    {
+                      "text": "...EZZ 4",
+                      "icon": false
+                    }
+                  ]
+                }]
+              },{
+                "text": "Branch Jakarta",
+                "state": { "opened": true },
+                "children": [
+                {
+                  "text": "GBK",
+                  "state": { "opened": true },
+                  "children": [
+                    {
+                      "text": "CCTV 1",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 2",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 3",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 4",
+                      "icon": "fas fa-video"
+                    }
+                  ]
+                },
+                {
+                  "text": "Roxy",
+                  "state": { "opened": false },
+                  "children": [
+                    {
+                      "text": "CCTV 1",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 2",
+                      "icon": "fas fa-video"
+                    }
+                  ]
+                }]
+              }
+              ],
+              'themes': {
+                'name': 'proton',
+                'responsive': true
+              }
+            }
+          });
+
+         $('#category_cameraTree').jstree({
+            'plugins': ["wholerow", "checkbox"],
+            'core': {
+              'data': [{
+                "text": "HD",
+                "state": { "opened": false },
+                "children": [
+                {
+                  "text": "Jakarta",
+                  "icon": "fas fa-caret-right",
+                  "children": [
+                  {
+                    "text": "Jakarta Utara",
+                    "icon": false
+                  },
+                  {
+                    "text": "Jakarta Timur",
+                    "icon": false
+                  },
+                  {
+                    "text": "Jakarta Selatan",
+                    "icon": false
+                  },
+                  {
+                    "text": "Jakarta Barat",
+                    "icon": false
+                  }
+                  ]
+                }, {
+                  "text": "Zone 2",
+                  "icon": "fas fa-caret-right",
+                  "children": [
+                  {
+                    "text": "...EZZ",
+                    "icon": false
+                  },
+                  {
+                    "text": "...EZZ 2",
+                    "icon": false
+                  },
+                  {
+                    "text": "...EZZ 3",
+                    "icon": false
+                  },
+                  {
+                    "text": "...EZZ 4",
+                    "icon": false
+                  }
+                  ]
+                }, {
+                  "text": "Zone 3",
+                  "icon": "fas fa-caret-right",
+                  "children": [
+                    {
+                      "text": "...EZZ",
+                      "icon": false
+                    },
+                    {
+                      "text": "...EZZ 2",
+                      "icon": false
+                    },
+                    {
+                      "text": "...EZZ 3",
+                      "icon": false
+                    },
+                    {
+                      "text": "...EZZ 4",
+                      "icon": false
+                    }
+                  ]
+                }]
+              },{
+                "text": "Branch Jakarta",
+                "state": { "opened": true },
+                "children": [
+                {
+                  "text": "GBK",
+                  "state": { "opened": true },
+                  "children": [
+                    {
+                      "text": "CCTV 1",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 2",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 3",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 4",
+                      "icon": "fas fa-video"
+                    }
+                  ]
+                },
+                {
+                  "text": "Roxy",
+                  "state": { "opened": false },
+                  "children": [
+                    {
+                      "text": "CCTV 1",
+                      "icon": "fas fa-video"
+                    },
+                    {
+                      "text": "CCTV 2",
+                      "icon": "fas fa-video"
+                    }
+                  ]
+                }]
+              }
+              ],
+              'themes': {
+                'name': 'proton',
+                'responsive': true
+              }
+            }
+          });
+    })
+  </script>
+
+  <script>
+    $(window).resize(function() {
+      var screenHeight = parseInt($("#content").height());
+      var cardTitleHeight = 29;
+      var mapCameraHeight = parseInt($(".map-camera").height());
+      var cameraTreeHeight = screenHeight - mapCameraHeight - cardTitleHeight - 82;
+      var cameraListHeight = screenHeight - 55;
+    
+      $(".tree-camera-category").css('height', cameraTreeHeight+'px');
+      $(".camera-list-view").css('height', cameraListHeight+'px');
+    }).resize();
+
+    // $('.input-daterange input').each(function() {
+    //     $(this).datepicker({
+    //       format: "dd/mm/yyyy",
+    //       todayBtn: "linked",
+    //       clearBtn: true,
+    //       todayHighlight: true
+    //     });
+    // });
+
+    $('#daterangecctv-container .input-daterange').datepicker({
+        format: "dd/mm/yyyy",
+        todayBtn: "linked",
+        clearBtn: true,
+        todayHighlight: true
+    });
+     
+  </script>
+
+  <script>
+    function cameraFocus(){
+      $('.action-header-box, .pagination-box, .camera-list-wrapper').toggleClass('hide-box');
+      $('.camera-focus-detail').toggleClass('active');
+    }
+
+    function addNewCamera(){
+      $('.camera-add, .table-view-cctv, .header-camera-list-hide').toggleClass('active');
+    }
+
+    function addNewFace(){
+      $('.face-reg-list, .face-reg-form, .header-facelist-hide').toggleClass('active');
+    }
+
+    function previewFaceRecog(){
+      $('.form-analytic-method-view, .form-preview-fr, .header-analytic-hide').toggleClass('active');
+    }
+
+    function previewPeopleCount(){
+      $('.form-analytic-method-view, .form-preview-pc, .header-analytic-hide').toggleClass('active');
+      $('.count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 6000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+      });
+    }
+
+    $('#analytic_method_select').change(function() {
+        if ($(this).find(':selected').val() === 'face-recog-method') {
+           $('#faceRecogMethod').addClass('active');
+           $('#peopleCountingMethod').removeClass('active');
+           $('#whiteblack_list_method').removeClass('active');
+           $('#preview_fr').addClass('active');
+           $('#preview_pc').removeClass('active');
+           $('#cam-fr').addClass('active');
+           $('#cam-pc').removeClass('active');
+
+        }
+        else if ($(this).find(':selected').val() === 'people-counting-method') {
+           $('#peopleCountingMethod').addClass('active');
+           $('#faceRecogMethod').removeClass('active');
+           $('#whiteblack_list_method').removeClass('active');
+           $('#preview_pc').addClass('active');
+           $('#preview_fr').removeClass('active');
+           $('#cam-pc').addClass('active');
+           $('#cam-fr').removeClass('active');
+        }
+        else if ($(this).find(':selected').val() === 'white-black-list-method') {
+           $('#whiteblack_list_method').addClass('active');
+           $('#peopleCountingMethod').removeClass('active');
+           $('#faceRecogMethod').removeClass('active');
+           $('#preview_pc').addClass('active');
+           $('#preview_fr').removeClass('active');
+           $('#cam-pc').addClass('active');
+           $('#cam-fr').removeClass('active');
+        }
+        else {
+            alert('null selected');
+        }
+    });
+  </script>
+  <script>
+    $('#table_camera_setting').DataTable();
+    $('#table_face_reg_list').DataTable();
+  </script>
+
+  <script>
+    
+  </script>
+</body>
+
+</html>

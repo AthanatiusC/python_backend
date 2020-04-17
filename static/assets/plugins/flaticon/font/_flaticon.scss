@@ -1,0 +1,73 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 13/04/2018 06:10
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-map-pin-marked:before { content: "\f100"; }
+.flaticon-tag-black-shape:before { content: "\f101"; }
+.flaticon-filter-filled-tool-symbol:before { content: "\f102"; }
+.flaticon-male:before { content: "\f103"; }
+.flaticon-attention:before { content: "\f104"; }
+.flaticon-paper-push-pin:before { content: "\f105"; }
+.flaticon-compass:before { content: "\f106"; }
+.flaticon-settings-work-tool:before { content: "\f107"; }
+.flaticon-risk-skull:before { content: "\f108"; }
+.flaticon-radar-positioning-system:before { content: "\f109"; }
+.flaticon-clouded-pronostic:before { content: "\f10a"; }
+.flaticon-increase-size-option:before { content: "\f10b"; }
+.flaticon-text-file:before { content: "\f10c"; }
+.flaticon-musica-searcher:before { content: "\f10d"; }
+.flaticon-travel:before { content: "\f10e"; }
+.flaticon-navigation:before { content: "\f10f"; }
+.flaticon-transport:before { content: "\f110"; }
+    
+    $font-Flaticon-map-pin-marked: "\f100";
+    $font-Flaticon-tag-black-shape: "\f101";
+    $font-Flaticon-filter-filled-tool-symbol: "\f102";
+    $font-Flaticon-male: "\f103";
+    $font-Flaticon-attention: "\f104";
+    $font-Flaticon-paper-push-pin: "\f105";
+    $font-Flaticon-compass: "\f106";
+    $font-Flaticon-settings-work-tool: "\f107";
+    $font-Flaticon-risk-skull: "\f108";
+    $font-Flaticon-radar-positioning-system: "\f109";
+    $font-Flaticon-clouded-pronostic: "\f10a";
+    $font-Flaticon-increase-size-option: "\f10b";
+    $font-Flaticon-text-file: "\f10c";
+    $font-Flaticon-musica-searcher: "\f10d";
+    $font-Flaticon-travel: "\f10e";
+    $font-Flaticon-navigation: "\f10f";
+    $font-Flaticon-transport: "\f110";
